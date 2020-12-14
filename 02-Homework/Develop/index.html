@@ -32,63 +32,63 @@
       <!-- Timeblocks go here -->
       <div class="row time-block">
         <div class="col-1 hour">9am</div>
-        <textarea class="col-10 past"></textarea>
+        <textarea class="col-10" id="hourNine"></textarea>
         <button class="btn col-1 saveBtn">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">10am</div>
-        <textarea class="col-10 past"></textarea>
+        <textarea class="col-10" id="hourTen"></textarea>
         <button class="btn col-1 saveBtn">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">11am</div>
-        <textarea class="col-10 past"></textarea>
+        <textarea class="col-10" id="hourEleven"></textarea>
         <button class="btn col-1 saveBtn">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">12pm</div>
-        <textarea class="col-10 present"></textarea>
+        <textarea class="col-10" id="hourTwelve"></textarea>
         <button class="btn col-1 saveBtn">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">1pm</div>
-        <textarea class="col-10 future"></textarea>
+        <textarea class="col-10" id="hourOne"></textarea>
         <button class="btn col-1 saveBtn">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">2pm</div>
-        <textarea class="col-10 future"></textarea>
+        <textarea class="col-10" id="hourTwo"></textarea>
         <button class="btn col-1 saveBtn">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">3pm</div>
-        <textarea class="col-10 future"></textarea>
+        <textarea class="col-10" id="hourThree"></textarea>
         <button class="btn col-1 saveBtn">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">4pm</div>
-        <textarea class="col-10 future"></textarea>
+        <textarea class="col-10" id="hourFour"></textarea>
         <button class="btn col-1 saveBtn">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">5pm</div>
-        <textarea class="col-10 future"></textarea>
+        <textarea class="col-10" id="hourFive"></textarea>
         <button class="btn col-1 saveBtn">
           Save
         </button>
@@ -100,5 +100,176 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script type="text/javascript">
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2,'0');
+    var mm =  String(today. getMonth() + 1). padStart(2, '0'); 
+    var yyyy =  today. getFullYear();
+
+    today = mm + '/' + dd + '/' + yyyy;
+    $("#currentDay").text(today);
+    
+    var currentDate = new Date();
+    var time = currentDate.getHours();
+
+    function updateTime(){
+      if (time == 9) {
+        NineAM();
+      } else if (time == 10) {
+        TenAM();
+      } else if (time == 11) {
+        ElevenAM();
+      }else if (time == 12) {
+        TwelvePM
+      }else if (time == 1) {
+        OnePM();
+      }else if (time == 2) {
+        TwoPM();
+      }else if (time == 3) {
+        ThreePM();
+      }else if (time == 4) {
+        FourPM();
+      }else if (time == 5) {
+        FivePM();
+      }else if (time > 9) {
+        beforeNine();
+      }else {
+        afterFive();
+      }
+    };
+    updateTime();
+    
+    function beforeNine() {
+      $("#hourNine").addClass("future");
+      $("#hourTen").addClass("future");
+      $("#hourEleven").addClass("future");
+      $("#hourTwelve").addClass("future");
+      $("#hourOne").addClass("future");
+      $("#hourTwo").addClass("future");
+      $("#hourThree").addClass("future");
+      $("#hourFour").addClass("future");
+      $("#hourFive").addClass("future");
+    };
+    function afterFive() {
+      $("#hourNine").addClass("past");
+      $("#hourTen").addClass("past");
+      $("#hourEleven").addClass("past");
+      $("#hourTwelve").addClass("past");
+      $("#hourOne").addClass("past");
+      $("#hourTwo").addClass("past");
+      $("#hourThree").addClass("past");
+      $("#hourFour").addClass("past");
+      $("#hourFive").addClass("past");
+    };
+    
+    function NineAM() {
+      $("#hourNine").addClass("present");
+      $("#hourTen").addClass("future");
+      $("#hourEleven").addClass("future");
+      $("#hourTwelve").addClass("future");
+      $("#hourOne").addClass("future");
+      $("#hourTwo").addClass("future");
+      $("#hourThree").addClass("future");
+      $("#hourFour").addClass("future");
+      $("#hourFive").addClass("future");
+    };
+
+   
+    function TenAM() {
+      $("#hourNine").addClass("past");
+      $("#hourTen").addClass("present");
+      $("#hourEleven").addClass("future");
+      $("#hourTwelve").addClass("future");
+      $("#hourOne").addClass("future");
+      $("#hourTwo").addClass("future");
+      $("#hourThree").addClass("future");
+      $("#hourFour").addClass("future");
+      $("#hourFive").addClass("future");
+    };
+    function ElevenAM() {
+      $("#hourNine").addClass("past");
+      $("#hourTen").addClass("past");
+      $("#hourEleven").addClass("present");
+      $("#hourTwelve").addClass("future");
+      $("#hourOne").addClass("future");
+      $("#hourTwo").addClass("future");
+      $("#hourThree").addClass("future");
+      $("#hourFour").addClass("future");
+      $("#hourFive").addClass("future");
+    };
+    function TwelvePM() {
+      $("#hourNine").addClass("past");
+      $("#hourTen").addClass("past");
+      $("#hourEleven").addClass("past");
+      $("#hourTwelve").addClass("present");
+      $("#hourOne").addClass("future");
+      $("#hourTwo").addClass("future");
+      $("#hourThree").addClass("future");
+      $("#hourFour").addClass("future");
+      $("#hourFive").addClass("future");
+    };
+    function OnePM() {
+      $("#hourNine").addClass("past");
+      $("#hourTen").addClass("past");
+      $("#hourEleven").addClass("past");
+      $("#hourTwelve").addClass("past");
+      $("#hourOne").addClass("present");
+      $("#hourTwo").addClass("future");
+      $("#hourThree").addClass("future");
+      $("#hourFour").addClass("future");
+      $("#hourFive").addClass("future");
+    };
+    function TwoPM() {
+      $("#hourNine").addClass("past");
+      $("#hourTen").addClass("past");
+      $("#hourEleven").addClass("past");
+      $("#hourTwelve").addClass("past");
+      $("#hourOne").addClass("past");
+      $("#hourTwo").addClass("present");
+      $("#hourThree").addClass("future");
+      $("#hourFour").addClass("future");
+      $("#hourFive").addClass("future");
+    };
+    function ThreePM() {
+      $("#hourNine").addClass("past");
+      $("#hourTen").addClass("past");
+      $("#hourEleven").addClass("past");
+      $("#hourTwelve").addClass("past");
+      $("#hourOne").addClass("past");
+      $("#hourTwo").addClass("past");
+      $("#hourThree").addClass("present");
+      $("#hourFour").addClass("future");
+      $("#hourFive").addClass("future");
+    };
+    function FourPM() {
+      $("#hourNine").addClass("past");
+      $("#hourTen").addClass("past");
+      $("#hourEleven").addClass("past");
+      $("#hourTwelve").addClass("past");
+      $("#hourOne").addClass("past");
+      $("#hourTwo").addClass("past");
+      $("#hourThree").addClass("past");
+      $("#hourFour").addClass("present");
+      $("#hourFive").addClass("future");
+    };
+    function FivePM() {
+      $("#hourNine").addClass("past");
+      $("#hourTen").addClass("past");
+      $("#hourEleven").addClass("past");
+      $("#hourTwelve").addClass("past");
+      $("#hourOne").addClass("past");
+      $("#hourTwo").addClass("past");
+      $("#hourThree").addClass("past");
+      $("#hourFour").addClass("past");
+      $("#hourFive").addClass("present");
+    };
+
+
+
+
+
+
+
+    </script>
   </body>
 </html>
