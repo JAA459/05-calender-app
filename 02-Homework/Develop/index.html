@@ -33,63 +33,63 @@
       <div class="row time-block">
         <div class="col-1 hour">9am</div>
         <textarea class="col-10" id="hourNine"></textarea>
-        <button class="btn col-1 saveBtn">
+        <button class="btn col-1 saveBtn" id="btnNine">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">10am</div>
         <textarea class="col-10" id="hourTen"></textarea>
-        <button class="btn col-1 saveBtn">
+        <button class="btn col-1 saveBtn" id="btnTen">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">11am</div>
         <textarea class="col-10" id="hourEleven"></textarea>
-        <button class="btn col-1 saveBtn">
+        <button class="btn col-1 saveBtn" id="btnEleven">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">12pm</div>
         <textarea class="col-10" id="hourTwelve"></textarea>
-        <button class="btn col-1 saveBtn">
+        <button class="btn col-1 saveBtn" id="btnTwelve">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">1pm</div>
         <textarea class="col-10" id="hourOne"></textarea>
-        <button class="btn col-1 saveBtn">
+        <button class="btn col-1 saveBtn" id="btnOne">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">2pm</div>
         <textarea class="col-10" id="hourTwo"></textarea>
-        <button class="btn col-1 saveBtn">
+        <button class="btn col-1 saveBtn" id="btnTwo">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">3pm</div>
         <textarea class="col-10" id="hourThree"></textarea>
-        <button class="btn col-1 saveBtn">
+        <button class="btn col-1 saveBtn" id="btnThree">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">4pm</div>
         <textarea class="col-10" id="hourFour"></textarea>
-        <button class="btn col-1 saveBtn">
+        <button class="btn col-1 saveBtn" id="btnFour">
           Save
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour">5pm</div>
         <textarea class="col-10" id="hourFive"></textarea>
-        <button class="btn col-1 saveBtn">
+        <button class="btn col-1 saveBtn" id="btnFive">
           Save
         </button>
       </div>
@@ -112,6 +112,65 @@
     var currentDate = new Date();
     var time = currentDate.getHours();
 
+    $("#btnNine").on("click", function(){
+        localStorage.setItem("eventNineAM", $('#hourNine').val());
+
+    });
+    $("#btnTen").on("click", function(){
+        localStorage.setItem("eventTenAM", $('#hourTen').val());
+
+    });
+    $("#btnEleven").on("click", function(){
+        localStorage.setItem("eventElevenAM", $('#hourEleven').val());
+
+    });
+    $("#btnTwelve").on("click", function(){
+        localStorage.setItem("eventTwelvePM", $('#hourTwelve').val());
+
+    });
+    $("#btnOne").on("click", function(){
+        localStorage.setItem("eventOnePM", $('#hourOne').val());
+
+    });
+    $("#btnTwo").on("click", function(){
+        localStorage.setItem("eventTwoPM", $('#hourTwo').val());
+
+    });
+    $("#btnThree").on("click", function(){
+        localStorage.setItem("eventThreePM", $('#hourThree').val());
+
+    });
+    $("#btnFour").on("click", function(){
+        localStorage.setItem("eventFourPM", $('#hourFour').val());
+
+    });
+    $("#btnFive").on("click", function(){
+        localStorage.setItem("eventFivePM", $('#hourFive').val());
+
+    });
+    function retrieve() {
+      var hourFiveText = localStorage.getItem("eventFivePM");
+      var hourNineText = localStorage.getItem("eventNineAM");
+      var hourTenText = localStorage.getItem("eventTenAM");
+      var hourElevenText = localStorage.getItem("eventElevenAM");
+      var hourTwelveText = localStorage.getItem("eventTwelvePM");
+      var hourOneText = localStorage.getItem("eventOnePM");
+      var hourTwoText = localStorage.getItem("eventTwoPM");
+      var hourThreeText = localStorage.getItem("eventThreePM");
+      var hourFourText = localStorage.getItem("eventFourPM");
+       $("#hourFive").text(hourFiveText);
+       $("#hourNine").text(hourNineText);
+       $("#hourTen").text(hourTenText);
+       $("#hourEleven").text(hourElevenText);
+       $("#hourTwelve").text(hourTwelveText);
+       $("#hourOne").text(hourOneText);
+       $("#hourTwo").text(hourTwoText);
+       $("#hourThree").text(hourThreeText);
+       $("#hourFour").text(hourFourText);
+    }
+    retrieve();
+    console.log(time);
+
     function updateTime(){
       if (time == 9) {
         NineAM();
@@ -120,7 +179,7 @@
       } else if (time == 11) {
         ElevenAM();
       }else if (time == 12) {
-        TwelvePM
+        TwelvePM();
       }else if (time == 1) {
         OnePM();
       }else if (time == 2) {
