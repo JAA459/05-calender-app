@@ -190,10 +190,10 @@
         FourPM();
       }else if (time == 17) {
         FivePM();
-      }else if (time > 9) {
+      }else if (time < 9) {
         beforeNine();
       }else {
-        afterFive();
+       afterFive();
       }
     };
     updateTime();
